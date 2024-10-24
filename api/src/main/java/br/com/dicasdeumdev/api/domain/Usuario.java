@@ -9,20 +9,20 @@ import lombok.*;
 @AllArgsConstructor
 @EqualsAndHashCode
 @NoArgsConstructor
-@Table
-public class User {
+@Table(name = "usuario")
+public class Usuario {
 
     @Id
-    @Column
+    @Column(name = "id_usuario")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column
+    @Column(name = "nome_usuario")
     private String nome;
 
-    @Column(unique = true)
+    @Column(unique = true, name = "email_usuario")
     private String email;
 
-    @Column
+    @Column(name = "password_usuario")
     private String password;
 }
