@@ -18,11 +18,6 @@ public class UsuarioResource {
 
     @GetMapping(path = "/usuario/{idUser}")
     public ResponseEntity<Usuario> encontrarUser(@PathVariable Integer idUser){
-        return ResponseEntity.ok(this.usuarioService.encontrarUser(idUser));
-    }
-
-    @GetMapping(path = "/buscar-usuario/{idUser}")
-    public ResponseEntity<Usuario> findById(@PathVariable Integer idUser){
-        return ResponseEntity.ok().body(new Usuario(1,"Yann", "yann_pg@hotmail.com","123"));
+        return ResponseEntity.ok().body(this.usuarioService.encontrarPeloUsuario(idUser));
     }
 }
