@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @AllArgsConstructor
 @RequestMapping(path = "/user")
@@ -23,5 +25,10 @@ public class UsuarioResource {
     @GetMapping(path = "/usuario/{idUser}")
     public ResponseEntity<UsuarioDTO> encontrarUser(@PathVariable Integer idUser){
         return ResponseEntity.ok().body(modelMapper.map(this.usuarioService.encontrarPeloUsuario(idUser), UsuarioDTO.class));
+    }
+
+    @GetMapping(path = "/usuario")
+    public ResponseEntity<List<UsuarioDTO>> encontrarTodosUsuario(){
+        return this.usuarioService.encontrarTodosUsuarios();
     }
 }
