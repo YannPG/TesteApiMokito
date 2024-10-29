@@ -1,5 +1,6 @@
 package br.com.dicasdeumdev.api.resource.exceptions;
 
+import br.com.dicasdeumdev.api.service.exceptions.NotAccepable;
 import br.com.dicasdeumdev.api.service.exceptions.ObjectNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
@@ -19,5 +20,14 @@ public class ResourceExceptionHandler {
                 ex.getMessage(),
                 request.getRequestURI());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
+    }
+
+    @ExceptionHandler(NotAccepable.class)
+    public ResponseEntity<StandarError> notAccepable(NotAccepable ex, HttpServletRequest request) {
+        StandarError error = new StandarError(LocalDateTime.now(),
+                HttpStatus.NOT_ACCEPTABLE.value(),
+                ex.getMessage(),
+                request.getRequestURI());
+        return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(error);
     }
 }
