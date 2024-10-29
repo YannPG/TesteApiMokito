@@ -22,13 +22,17 @@ public class UsuarioDTO {
 
     private String email;
 
+    private String codigoRegistro;
+
     @JsonIgnore
     private String password;
+
 
     public UsuarioDTO(Usuario usuario) {
         this.id = usuario.getId();
         this.nome = usuario.getNome();
         this.email = usuario.getEmail();
+        this.codigoRegistro = usuario.getCodigoRegistro();
         this.password = usuario.getPassword();
     }
 

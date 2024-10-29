@@ -25,4 +25,7 @@ public class Usuario {
 
     @Column(name = "password_usuario")
     private String password;
+
+    @Column(unique =true, name = "codigo_registro")
+    private String codigoRegistro;
 }
