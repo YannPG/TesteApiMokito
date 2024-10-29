@@ -5,7 +5,7 @@ import br.com.dicasdeumdev.api.domain.dto.UsuarioDTO;
 import br.com.dicasdeumdev.api.domain.forms.UsuarioForm;
 import br.com.dicasdeumdev.api.repository.UsuarioRepository;
 import br.com.dicasdeumdev.api.service.UsuarioService;
-import br.com.dicasdeumdev.api.service.exceptions.NotAccepable;
+import br.com.dicasdeumdev.api.service.exceptions.BadRequest;
 import br.com.dicasdeumdev.api.service.exceptions.ObjectNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -34,7 +34,7 @@ public class UsusarioServiceImpl implements UsuarioService {
     @Override
     public UsuarioDTO criarUsuario(UsuarioForm usuarioForm) {
         boolean usuarioEncontrado = this.usuarioRepository.existsByEmail(usuarioForm.getEmail());
-        if(usuarioEncontrado) throw new NotAccepable("Email já cadastrado.");
+        if(usuarioEncontrado) throw new BadRequest("Email já cadastrado.");
 
         Usuario novoUsuario = new Usuario();
         novoUsuario.setNome(usuarioForm.getNome());
