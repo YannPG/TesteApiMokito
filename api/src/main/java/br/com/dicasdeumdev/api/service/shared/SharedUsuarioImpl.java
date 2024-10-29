@@ -13,31 +13,31 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class SharedUsuarioImpl implements SharedUsuario {
 
-    private final UsuarioRepository usuarioRepository;
+  private final UsuarioRepository usuarioRepository;
 
-    @Override
-    public Usuario encontrarUsuarioPeloRegistro(String codigoRegistro){
-        Usuario usuarioEncontrado = this.usuarioRepository
-                .findByCodigoRegistro(codigoRegistro)
-                .orElseThrow(()-> new ObjectNotFoundException("Não foi encontrado usuario com este registro."));
-        return usuarioEncontrado;
-    }
+  @Override
+  public Usuario encontrarUsuarioPeloRegistro(String codigoRegistro) {
+    Usuario usuarioEncontrado =
+        this.usuarioRepository
+            .findByCodigoRegistro(codigoRegistro)
+            .orElseThrow(
+                () -> new ObjectNotFoundException("Não foi encontrado usuario com este registro."));
+    return usuarioEncontrado;
+  }
 
-    @Override
-    public void validarEmail(UsuarioForm usuarioForm) {
-        boolean usuarioEncontrado = this.usuarioRepository
-                .existsByEmail(usuarioForm.getEmail());
-        if (usuarioEncontrado) {
-            throw new BadRequest("Email já cadastrado.");
-        }
+  @Override
+  public void validarEmail(UsuarioForm usuarioForm) {
+    boolean usuarioEncontrado = this.usuarioRepository.existsByEmail(usuarioForm.getEmail());
+    if (usuarioEncontrado) {
+      throw new BadRequest("Email já cadastrado.");
     }
+  }
 
-    @Override
-    public void validarEmail(AtualizarUsuarioForms usuarioForm) {
-        boolean usuarioEncontrado = this.usuarioRepository
-                .existsByEmail(usuarioForm.getEmail());
-        if (usuarioEncontrado) {
-            throw new BadRequest("Email já cadastrado.");
-        }
+  @Override
+  public void validarEmail(AtualizarUsuarioForms usuarioForm) {
+    boolean usuarioEncontrado = this.usuarioRepository.existsByEmail(usuarioForm.getEmail());
+    if (usuarioEncontrado) {
+      throw new BadRequest("Email já cadastrado.");
     }
+  }
 }

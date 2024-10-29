@@ -6,12 +6,12 @@ import lombok.Getter;
 @Getter
 public class UsuarioForm {
 
-    private String nome;
+  private String nome;
 
-    private String email;
+  private String email;
 
-    @JsonIgnore
-    private String password;
+  @JsonIgnore
+  private String password;
 
-    private String codigoRegistro;
+  private String codigoRegistro;
 }

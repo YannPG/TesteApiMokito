@@ -5,10 +5,9 @@ import lombok.Getter;
 @Getter
 public class AtualizarUsuarioForms {
 
-    private String nome;
+  private String nome;
 
-    private String email;
+  private String email;
 
-    private String password;
-
+  private String password;
 }

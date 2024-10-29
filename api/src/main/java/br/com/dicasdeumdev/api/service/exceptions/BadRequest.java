@@ -4,7 +4,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 
 public class BadRequest extends DataIntegrityViolationException {
 
-    public BadRequest(String msg) {
-        super(msg);
-    }
+  public BadRequest(String msg) {
+    super(msg);
+  }
 }
