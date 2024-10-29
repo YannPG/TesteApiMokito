@@ -37,4 +37,8 @@ public class UsuarioDTO {
                 .map(UsuarioDTO::new)
                 .collect(Collectors.toList());
     }
+
+    public static UsuarioDTO converte (Usuario usuario){
+        return new UsuarioDTO(usuario);
+    }
 }

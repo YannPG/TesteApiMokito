@@ -1,15 +1,12 @@
 package br.com.dicasdeumdev.api.resource;
 
-import br.com.dicasdeumdev.api.domain.Usuario;
 import br.com.dicasdeumdev.api.domain.dto.UsuarioDTO;
+import br.com.dicasdeumdev.api.domain.forms.UsuarioForm;
 import br.com.dicasdeumdev.api.service.UsuarioService;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -30,5 +27,10 @@ public class UsuarioResource {
     @GetMapping(path = "/usuario")
     public ResponseEntity<List<UsuarioDTO>> encontrarTodosUsuario(){
         return this.usuarioService.encontrarTodosUsuarios();
+    }
+
+    @PostMapping(path = "/criar-usuario")
+    public ResponseEntity<UsuarioDTO> criarNovoUsuario(@RequestBody UsuarioForm usuarioCriado){
+        return ResponseEntity.ok().body(this.usuarioService.criarUsuario(usuarioCriado));
     }
 }
