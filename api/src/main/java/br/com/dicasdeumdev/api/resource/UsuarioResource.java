@@ -5,6 +5,7 @@ import br.com.dicasdeumdev.api.domain.forms.AtualizarUsuarioForms;
 import br.com.dicasdeumdev.api.domain.forms.UsuarioForm;
 import br.com.dicasdeumdev.api.service.UsuarioService;
 import java.util.List;
+
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.ResponseEntity;
@@ -46,5 +47,11 @@ public class UsuarioResource {
       @PathVariable String codigoRegistro, @RequestBody AtualizarUsuarioForms usuarioAtualizado) {
     return ResponseEntity.ok()
         .body(this.usuarioService.atualizarUsuario(usuarioAtualizado, codigoRegistro));
+  }
+
+  @DeleteMapping("/deletar-usuario/{codigoRegistro}")
+  public void deletarUsuario(@PathVariable String codigoRegistro) {
+
+    this.usuarioService.deletarUsuarioCodigoRegistro(codigoRegistro);
   }
 }

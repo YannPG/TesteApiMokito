@@ -17,4 +17,6 @@ public interface UsuarioService {
   UsuarioDTO atualizarUsuario(AtualizarUsuarioForms usuarioAtualizado, String codigoRegistro);
 
   UsuarioDTO encontrarUsuarioPeloRegistro(String codigoRegistro);
+
+  void deletarUsuarioCodigoRegistro(String codigoRegistro);
 }

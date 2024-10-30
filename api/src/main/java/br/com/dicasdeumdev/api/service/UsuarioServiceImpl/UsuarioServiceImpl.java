@@ -10,6 +10,8 @@ import br.com.dicasdeumdev.api.service.exceptions.ObjectNotFoundException;
 import br.com.dicasdeumdev.api.service.shared.SharedUsuarioImpl;
 import java.util.List;
 import java.util.Optional;
+
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -67,5 +69,11 @@ public class UsuarioServiceImpl implements UsuarioService {
     usuarioEncontrado.setCodigoRegistro(codigoRegistro);
     this.usuarioRepository.save(usuarioEncontrado);
     return UsuarioDTO.converte(usuarioEncontrado);
+  }
+
+  @Transactional
+  @Override
+  public void deletarUsuarioCodigoRegistro(String codigoRegistro) {
+    this.usuarioRepository.deleteByCodigoRegistro(codigoRegistro);
   }
 }
