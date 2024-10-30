@@ -74,6 +74,7 @@ public class UsuarioServiceImpl implements UsuarioService {
   @Transactional
   @Override
   public void deletarUsuarioCodigoRegistro(String codigoRegistro) {
+    this.sharedUsuarioImpl.encontrarUsuarioPeloRegistro(codigoRegistro);
     this.usuarioRepository.deleteByCodigoRegistro(codigoRegistro);
   }
 }

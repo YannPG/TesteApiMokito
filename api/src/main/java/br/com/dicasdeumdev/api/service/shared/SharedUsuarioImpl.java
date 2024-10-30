@@ -25,6 +25,7 @@ public class SharedUsuarioImpl implements SharedUsuario {
     return usuarioEncontrado;
   }
 
+  //validar email
   @Override
   public void validarEmail(UsuarioForm usuarioForm) {
     boolean usuarioEncontrado = this.usuarioRepository.existsByEmail(usuarioForm.getEmail());
@@ -33,6 +34,7 @@ public class SharedUsuarioImpl implements SharedUsuario {
     }
   }
 
+  //validar email para atualizar
   @Override
   public void validarEmail(AtualizarUsuarioForms usuarioForm) {
     boolean usuarioEncontrado = this.usuarioRepository.existsByEmail(usuarioForm.getEmail());
